@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple DOM and Events</title>
+    <script>
+        var out="";
+		// 設計按鈕事件處理器的function
+		function start() {
+            //找到id為"displayButton"的網頁元素物件(就是那個按鈕的物件)
+            var button = document.getElementById("displaytriangle");
+            var button2 = document.getElementById("displaysquare");
+            //幫按鈕註冊事件處理器，一旦按鈕被使用者點擊，就會呼叫display function
+            button.addEventListener("click", triangle, false);
+            button2.addEventListener("click", square, false);
+        }
+
+        // 顯示訊息的function
+        function triangle() {
+            //找到id為"name"的網頁元素物件(就是那個文字欄位的物件)
+            var textFieldObject = document.getElementById("length");
+            //取得文字欄位的文字內容
+            var content = textFieldObject.value; 
+            parseInt(content);
+           
+            var message =baseballtriangle(content);
+
+            var divObject = document.getElementById("displaytriangle");
+
+      
+            divObject.innerHTML = message;
+           
+        }
+
+        function square() {
+            //找到id為"name"的網頁元素物件(就是那個文字欄位的物件)
+            var textFieldObject = document.getElementById("length");
+            //取得文字欄位的文字內容
+            var content = textFieldObject.value;
+
+            //組合出想在div區塊中呈現的html片段
+            var message = "<h3>您的名字是" + content + "</h3>";
+
+            //找到id為"display"的網頁元素物件(就是那個div區塊的物件)
+            var divObject = document.getElementById("display");
+
+            //將div區塊的內容改為我們準備好的html片段，網頁上的div就會顯示新的內容
+            divObject.innerHTML = message;
+            textFieldObject.value = "Hahaha!!!";
+        }
+        
+        function baseballtriangle( )
+         {
+             out="";
+            for(var i=0;i<content;i++){
+                out="<p>";
+                for(var j=0;j<content;j++){
+                    out+='<img id = "die1" src = "baseball.jpg" width="50px" height="50px" >'
+                }
+                out="<\p>";
+            }
+            
+         } 
+
+        window.addEventListener("load", start, false);
+    
+	</script>
+</head>
+
+<body>
+    <!-- 文字欄位元素與按鈕元素 -->
+    <form action = "#">
+	    <input id="length" type="text" value="5">
+        <input id="displaytriangle" type="button" value="trangle">
+        <input id="displaysquare" type="button" value="square">
+    </form>
+    <ol>
+        <li><img id = "die1" src = "blank.png" alt = "blank image"></li>
+     </ol>
+	<!-- 預留div區塊，以便能更新此區塊之內容 -->
+	<div id="display"></div>
+</body>
+
+</html>
